@@ -403,6 +403,55 @@
     border-color: var(--gold);
   }
 
+  /* ── TOGGLE BUTTONS ── */
+  .toggle-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  @media (max-width: 480px) {
+    .toggle-grid { grid-template-columns: 1fr; }
+  }
+
+  .toggle-group {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .toggle-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Garet', sans-serif;
+    font-size: 13.5px;
+    color: var(--ivory);
+    cursor: pointer;
+    font-weight: 400;
+    background: rgba(255,255,255,0.05);
+    padding: 11px 18px;
+    border-radius: 50px;
+    border: 1.5px solid rgba(255,255,255,0.15);
+    transition: all 0.2s;
+    user-select: none;
+  }
+
+  .toggle-btn:hover {
+    border-color: rgba(255,255,255,0.35);
+    background: rgba(255,255,255,0.1);
+  }
+
+  .toggle-btn.selected {
+    background: var(--sage);
+    border-color: var(--sage);
+    color: #fff;
+    font-weight: 700;
+  }
+
+  .toggle-btn .tick { display: none; font-size: 12px; }
+  .toggle-btn.selected .tick { display: inline; }
+
   /* checkbox grid */
   .checkbox-grid {
     display: grid;
@@ -666,19 +715,24 @@
         </select>
       </div>
 
+      <!-- hidden inputs para envio -->
+      <input type="hidden" id="motivos_hidden" name="motivos" value="" />
+      <input type="hidden" id="formato_hidden" name="formato" value="" />
+      <input type="hidden" id="contacto_hidden" name="contacto" value="" />
+
       <div class="form-group">
         <label>Motivo principal da consulta (pode selecionar mais do que um)</label>
-        <div class="checkbox-grid">
-          <label class="checkbox-item"><input type="checkbox" name="motivo_dor" value="Dor ao amamentar" /> Dor ao amamentar</label>
-          <label class="checkbox-item"><input type="checkbox" name="motivo_pega" value="Dificuldade na pega" /> Dificuldade na pega</label>
-          <label class="checkbox-item"><input type="checkbox" name="motivo_producao" value="Dúvidas sobre produção de leite" /> Dúvidas sobre produção de leite</label>
-          <label class="checkbox-item"><input type="checkbox" name="motivo_gravidez" value="Preparação na gravidez" /> Preparação na gravidez</label>
-          <label class="checkbox-item"><input type="checkbox" name="motivo_trabalho" value="Regresso ao trabalho" /> Regresso ao trabalho</label>
-          <label class="checkbox-item"><input type="checkbox" name="motivo_gemeos" value="Amamentação com gémeos" /> Amamentação com gémeos</label>
-          <label class="checkbox-item"><input type="checkbox" name="motivo_prematuro" value="Bebé prematuro" /> Bebé prematuro</label>
-          <label class="checkbox-item"><input type="checkbox" name="motivo_colostro" value="Recolha de colostro" /> Recolha de colostro</label>
-          <label class="checkbox-item"><input type="checkbox" name="motivo_plano" value="Plano de amamentação" /> Plano de amamentação</label>
-          <label class="checkbox-item"><input type="checkbox" name="motivo_outro" value="Outro" /> Outro</label>
+        <div class="toggle-grid" id="grupo-motivos">
+          <button type="button" class="toggle-btn" data-group="motivos" data-value="Dor ao amamentar"><span class="tick">✓</span> Dor ao amamentar</button>
+          <button type="button" class="toggle-btn" data-group="motivos" data-value="Dificuldade na pega"><span class="tick">✓</span> Dificuldade na pega</button>
+          <button type="button" class="toggle-btn" data-group="motivos" data-value="Dúvidas sobre produção de leite"><span class="tick">✓</span> Dúvidas sobre produção de leite</button>
+          <button type="button" class="toggle-btn" data-group="motivos" data-value="Preparação na gravidez"><span class="tick">✓</span> Preparação na gravidez</button>
+          <button type="button" class="toggle-btn" data-group="motivos" data-value="Regresso ao trabalho"><span class="tick">✓</span> Regresso ao trabalho</button>
+          <button type="button" class="toggle-btn" data-group="motivos" data-value="Amamentação com gémeos"><span class="tick">✓</span> Amamentação com gémeos</button>
+          <button type="button" class="toggle-btn" data-group="motivos" data-value="Bebé prematuro"><span class="tick">✓</span> Bebé prematuro</button>
+          <button type="button" class="toggle-btn" data-group="motivos" data-value="Recolha de colostro"><span class="tick">✓</span> Recolha de colostro</button>
+          <button type="button" class="toggle-btn" data-group="motivos" data-value="Plano de amamentação"><span class="tick">✓</span> Plano de amamentação</button>
+          <button type="button" class="toggle-btn" data-group="motivos" data-value="Outro"><span class="tick">✓</span> Outro</button>
         </div>
       </div>
 
@@ -686,18 +740,18 @@
 
       <div class="form-group">
         <label>Preferência de formato</label>
-        <div class="radio-group">
-          <label class="radio-item"><input type="radio" name="formato" value="presencial" /> Presencial</label>
-          <label class="radio-item"><input type="radio" name="formato" value="online" /> Online</label>
+        <div class="toggle-group" id="grupo-formato">
+          <button type="button" class="toggle-btn" data-group="formato" data-value="Presencial"><span class="tick">✓</span> Presencial</button>
+          <button type="button" class="toggle-btn" data-group="formato" data-value="Online"><span class="tick">✓</span> Online</button>
         </div>
       </div>
 
       <div class="form-group">
         <label>Preferência de contacto</label>
-        <div class="radio-group">
-          <label class="radio-item"><input type="radio" name="contacto" value="telefone" /> Chamada telefónica</label>
-          <label class="radio-item"><input type="radio" name="contacto" value="whatsapp" /> WhatsApp</label>
-          <label class="radio-item"><input type="radio" name="contacto" value="email" /> Email</label>
+        <div class="toggle-group" id="grupo-contacto">
+          <button type="button" class="toggle-btn" data-group="contacto" data-value="Chamada telefónica"><span class="tick">✓</span> Chamada telefónica</button>
+          <button type="button" class="toggle-btn" data-group="contacto" data-value="WhatsApp"><span class="tick">✓</span> WhatsApp</button>
+          <button type="button" class="toggle-btn" data-group="contacto" data-value="Email"><span class="tick">✓</span> Email</button>
         </div>
       </div>
 
@@ -718,5 +772,33 @@
   <p>📍 Consultas presenciais em <strong>Mariocas, Vila Real</strong></p>
 </div>
 
+<script>
+  const motivosSelected = new Set();
+
+  document.querySelectorAll('.toggle-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const group = this.dataset.group;
+      const value = this.dataset.value;
+
+      if (group === 'motivos') {
+        // múltipla seleção
+        if (this.classList.contains('selected')) {
+          this.classList.remove('selected');
+          motivosSelected.delete(value);
+        } else {
+          this.classList.add('selected');
+          motivosSelected.add(value);
+        }
+        document.getElementById('motivos_hidden').value = Array.from(motivosSelected).join(', ');
+
+      } else {
+        // seleção única — só desseleciona os do mesmo grupo
+        document.querySelectorAll(`.toggle-btn[data-group="${group}"]`).forEach(b => b.classList.remove('selected'));
+        this.classList.add('selected');
+        document.getElementById(`${group}_hidden`).value = value;
+      }
+    });
+  });
+</script>
 </body>
 </html>
