@@ -429,12 +429,13 @@
   }
 
   .checkbox-item input[type="checkbox"] {
-    width: 16px;
-    height: 16px;
+    width: 18px;
+    height: 18px;
     flex-shrink: 0;
     accent-color: var(--sage);
     padding: 0;
-    border-radius: 50%;
+    border-radius: 4px;
+    cursor: pointer;
   }
 
   /* radio group */
@@ -668,16 +669,16 @@
       <div class="form-group">
         <label>Motivo principal da consulta (pode selecionar mais do que um)</label>
         <div class="checkbox-grid">
-          <label class="checkbox-item"><input type="checkbox" name="motivo" value="dor" /> Dor ao amamentar</label>
-          <label class="checkbox-item"><input type="checkbox" name="motivo" value="pega" /> Dificuldade na pega</label>
-          <label class="checkbox-item"><input type="checkbox" name="motivo" value="producao" /> Dúvidas sobre produção de leite</label>
-          <label class="checkbox-item"><input type="checkbox" name="motivo" value="gravidez" /> Preparação na gravidez</label>
-          <label class="checkbox-item"><input type="checkbox" name="motivo" value="trabalho" /> Regresso ao trabalho</label>
-          <label class="checkbox-item"><input type="checkbox" name="motivo" value="gemeos" /> Amamentação com gémeos</label>
-          <label class="checkbox-item"><input type="checkbox" name="motivo" value="prematuro" /> Bebé prematuro</label>
-          <label class="checkbox-item"><input type="checkbox" name="motivo" value="colostro" /> Recolha de colostro</label>
-          <label class="checkbox-item"><input type="checkbox" name="motivo" value="plano" /> Plano de amamentação</label>
-          <label class="checkbox-item"><input type="checkbox" name="motivo" value="outro" /> Outro</label>
+          <label class="checkbox-item"><input type="checkbox" name="motivo_dor" value="Dor ao amamentar" /> Dor ao amamentar</label>
+          <label class="checkbox-item"><input type="checkbox" name="motivo_pega" value="Dificuldade na pega" /> Dificuldade na pega</label>
+          <label class="checkbox-item"><input type="checkbox" name="motivo_producao" value="Dúvidas sobre produção de leite" /> Dúvidas sobre produção de leite</label>
+          <label class="checkbox-item"><input type="checkbox" name="motivo_gravidez" value="Preparação na gravidez" /> Preparação na gravidez</label>
+          <label class="checkbox-item"><input type="checkbox" name="motivo_trabalho" value="Regresso ao trabalho" /> Regresso ao trabalho</label>
+          <label class="checkbox-item"><input type="checkbox" name="motivo_gemeos" value="Amamentação com gémeos" /> Amamentação com gémeos</label>
+          <label class="checkbox-item"><input type="checkbox" name="motivo_prematuro" value="Bebé prematuro" /> Bebé prematuro</label>
+          <label class="checkbox-item"><input type="checkbox" name="motivo_colostro" value="Recolha de colostro" /> Recolha de colostro</label>
+          <label class="checkbox-item"><input type="checkbox" name="motivo_plano" value="Plano de amamentação" /> Plano de amamentação</label>
+          <label class="checkbox-item"><input type="checkbox" name="motivo_outro" value="Outro" /> Outro</label>
         </div>
       </div>
 
