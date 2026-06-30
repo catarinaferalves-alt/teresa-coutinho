@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Consultas de Amamentação — Teresa Coutinho</title>
+<link href="https://api.fontshare.com/v2/css?f[]=garet@400,700,900&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ivory: #FAF8F4;
+    --sage: #5C9E62;
+    --sage-light: #C8E6CB;
+    --gold: #C9A96E;
+    --brown: #3D3530;
+    --blush: #F2BCAD;
+    --blush-light: #FAEAE5;
+    --muted: #7A7069;
+    --white: #FFFFFF;
+  }
+
+  body {
+    font-family: 'Garet', sans-serif;
+    background-color: var(--ivory);
+    color: var(--brown);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background-color: var(--blush-light);
+    padding: 80px 24px 64px;
+    text-align: center;
+  }
+
+  .hero-eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+
+  .hero h1 {
+    font-family: 'Garet', sans-serif;
+    font-size: clamp(26px, 5vw, 44px);
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--brown);
+    max-width: 640px;
+    margin: 0 auto 20px;
+  }
+
+  .hero-sub {
+    font-size: 16px;
+    color: var(--muted);
+    max-width: 520px;
+    margin: 0 auto 36px;
+    font-weight: 400;
+    line-height: 1.8;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    background-color: var(--sage);
+    color: var(--white);
+    font-family: 'Garet', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    padding: 16px 40px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .btn-primary:hover { background-color: #4a8a50; }
+
+  /* ── IMAGE BANNER ── */
+  .img-banner {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .img-banner-half {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .img-banner-half img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    display: block;
+  }
+
+  @media (max-width: 560px) {
+    .img-banner { height: 220px; }
+    .img-banner-half { grid-template-columns: 1fr; }
+    .img-banner-half img { height: 200px; }
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    width: 48px;
+    height: 3px;
+    background-color: var(--gold);
+    margin: 0 auto 32px;
+    border-radius: 50px;
+  }
+
+  /* ── SECTIONS ── */
+  section {
+    padding: 72px 24px;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  section h2 {
+    font-family: 'Garet', sans-serif;
+    font-size: clamp(22px, 3.5vw, 32px);
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--brown);
+    margin-bottom: 36px;
+  }
+
+  /* ── PARA QUEM É ── */
+  .para-quem-bg {
+    background-color: var(--sage-light);
+    padding: 72px 24px;
+  }
+
+  .para-quem-inner {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .para-quem-inner h2 {
+    font-family: 'Garet', sans-serif;
+    font-size: clamp(22px, 3.5vw, 32px);
+    font-weight: 700;
+    color: var(--brown);
+    margin-bottom: 32px;
+  }
+
+  .topicos {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  @media (max-width: 560px) {
+    .topicos { grid-template-columns: 1fr; }
+  }
+
+  .topicos li {
+    background: var(--white);
+    border-left: 4px solid var(--sage);
+    padding: 14px 18px;
+    font-size: 14.5px;
+    color: var(--brown);
+    font-weight: 500;
+    line-height: 1.5;
+    border-radius: 0 12px 12px 0;
+  }
+
+  .para-quem-fecho {
+    margin-top: 36px;
+    font-size: 15px;
+    color: var(--muted);
+    font-style: italic;
+    text-align: center;
+    font-weight: 400;
+  }
+
+  /* ── COMO FUNCIONA ── */
+  .passos {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .passo {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .passo-icon {
+    font-size: 26px;
+    line-height: 1;
+    min-width: 44px;
+    height: 44px;
+    background-color: var(--blush-light);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .passo-content h3 {
+    font-family: 'Garet', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--brown);
+    margin-bottom: 4px;
+  }
+
+  .passo-content p {
+    font-size: 14.5px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* ── QUEM SOU ── */
+  .quem-sou-bg {
+    background-color: var(--blush);
+    padding: 72px 24px;
+  }
+
+  .quem-sou-inner {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .quem-sou-inner h2 {
+    font-family: 'Garet', sans-serif;
+    font-size: clamp(22px, 3.5vw, 32px);
+    font-weight: 700;
+    color: var(--brown);
+    margin-bottom: 24px;
+  }
+
+  .quem-sou-inner p {
+    font-size: 15px;
+    color: var(--brown);
+    line-height: 1.85;
+    margin-bottom: 28px;
+    font-weight: 400;
+  }
+
+  .certs {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .certs li {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--brown);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .certs li::before {
+    content: '';
+    display: inline-block;
+    width: 18px;
+    height: 3px;
+    background-color: var(--gold);
+    flex-shrink: 0;
+    border-radius: 50px;
+  }
+
+  /* ── FORMATOS ── */
+  .formatos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 8px;
+  }
+
+  @media (max-width: 480px) {
+    .formatos { grid-template-columns: 1fr; }
+  }
+
+  .formato-card {
+    border: 2px solid var(--sage-light);
+    border-radius: 20px;
+    padding: 32px 24px;
+    background: var(--white);
+    text-align: center;
+  }
+
+  .formato-card .formato-icon {
+    font-size: 32px;
+    margin-bottom: 14px;
+    display: block;
+  }
+
+  .formato-card h3 {
+    font-family: 'Garet', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--brown);
+    margin-bottom: 8px;
+  }
+
+  .formato-card p {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* ── FORMULÁRIO ── */
+  .form-bg {
+    background-color: var(--brown);
+    padding: 72px 24px 80px;
+  }
+
+  .form-inner {
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .form-inner .section-label { color: var(--gold); }
+
+  .form-inner h2 {
+    font-family: 'Garet', sans-serif;
+    font-size: clamp(22px, 3.5vw, 32px);
+    font-weight: 700;
+    color: var(--ivory);
+    margin-bottom: 8px;
+  }
+
+  .form-sub {
+    font-size: 14px;
+    color: #AEA49B;
+    margin-bottom: 40px;
+    font-weight: 400;
+  }
+
+  .form-group {
+    margin-bottom: 22px;
+  }
+
+  .form-group label {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #C4B9B2;
+    margin-bottom: 8px;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    background: rgba(255,255,255,0.06);
+    border: 1.5px solid rgba(255,255,255,0.15);
+    border-radius: 50px;
+    padding: 14px 20px;
+    font-family: 'Garet', sans-serif;
+    font-size: 14px;
+    color: var(--ivory);
+    outline: none;
+    transition: border-color 0.2s;
+    -webkit-appearance: none;
+  }
+
+  .form-group textarea {
+    border-radius: 20px;
+    resize: vertical;
+    min-height: 100px;
+  }
+
+  .form-group select option {
+    background: var(--brown);
+    color: var(--ivory);
+  }
+
+  .form-group input::placeholder,
+  .form-group textarea::placeholder {
+    color: #7A6F6A;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--gold);
+  }
+
+  /* checkbox grid */
+  .checkbox-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  @media (max-width: 480px) {
+    .checkbox-grid { grid-template-columns: 1fr; }
+  }
+
+  .checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13.5px;
+    color: var(--ivory);
+    cursor: pointer;
+    font-weight: 400;
+    background: rgba(255,255,255,0.05);
+    padding: 10px 14px;
+    border-radius: 50px;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .checkbox-item input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    accent-color: var(--sage);
+    padding: 0;
+    border-radius: 50%;
+  }
+
+  /* radio group */
+  .radio-group {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .radio-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13.5px;
+    color: var(--ivory);
+    cursor: pointer;
+    font-weight: 400;
+    background: rgba(255,255,255,0.05);
+    padding: 10px 18px;
+    border-radius: 50px;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .radio-item input[type="radio"] {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--sage);
+    padding: 0;
+  }
+
+  .form-divider {
+    border: none;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    margin: 32px 0;
+  }
+
+  .btn-submit {
+    display: inline-block;
+    background-color: var(--gold);
+    color: var(--brown);
+    font-family: 'Garet', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    padding: 16px 40px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background 0.2s;
+    width: 100%;
+    margin-top: 8px;
+  }
+
+  .btn-submit:hover { background-color: #b8943e; }
+
+  .form-note {
+    margin-top: 16px;
+    font-size: 12.5px;
+    color: #7A6F6A;
+    text-align: center;
+    line-height: 1.7;
+  }
+
+  /* ── LOCALIZAÇÃO ── */
+  .localizacao {
+    text-align: center;
+    padding: 40px 24px;
+    background-color: var(--ivory);
+  }
+
+  .localizacao p {
+    font-size: 13px;
+    color: var(--muted);
+    font-weight: 500;
+  }
+
+  .localizacao strong {
+    color: var(--brown);
+    font-weight: 700;
+  }
+</style>
+</head>
+<body>
+
+<!-- ── SECÇÃO 1 — HERO ── -->
+<div class="hero">
+  <p class="hero-eyebrow">Consultas de Amamentação</p>
+  <h1>Amamentar pode ser diferente do que imaginou. E tudo bem.</h1>
+  <p class="hero-sub">Uma consulta de amamentação ajuda-a a perceber o que está a acontecer, a resolver dificuldades e a continuar, com mais segurança e menos ansiedade.</p>
+  <a href="#formulario" class="btn-primary">Quero marcar a minha consulta</a>
+</div>
+
+<!-- ── IMAGEM 1 ── -->
+<img class="img-banner"
+  src="imagens/foto1.jpg"
+  alt="Mãe com bebé" />
+
+<!-- ── SECÇÃO 2 — PARA QUEM É ── -->
+<div class="para-quem-bg">
+  <div class="para-quem-inner">
+    <span class="section-label">Para quem é</span>
+    <div class="divider"></div>
+    <h2>Esta consulta é para si se…</h2>
+    <ul class="topicos">
+      <li>🔹 Sente dor ao amamentar</li>
+      <li>🔹 Tem dúvidas sobre se o bebé está a mamar o suficiente</li>
+      <li>🔹 Quer preparar a amamentação ainda na gravidez</li>
+      <li>🔹 Está a pensar regressar ao trabalho e não sabe como continuar</li>
+      <li>🔹 Está a amamentar gémeos</li>
+      <li>🔹 O bebé tem dificuldade na pega</li>
+      <li>🔹 Quer construir um plano de amamentação personalizado</li>
+      <li>🔹 Precisa de apoio ao desmame gradual</li>
+    </ul>
+    <p class="para-quem-fecho">Se está a lutar sozinha com a amamentação, não precisa de continuar assim.</p>
+  </div>
+</div>
+
+<!-- ── IMAGEM 2 — duas fotos lado a lado ── -->
+<div class="img-banner-half">
+  <img src="imagens/foto2.jpg" alt="Recém-nascido" />
+  <img src="imagens/foto2.jpg" alt="Mãe e bebé" />
+</div>
+
+<!-- ── SECÇÃO 3 — COMO FUNCIONA ── -->
+<section>
+  <span class="section-label">Como funciona</span>
+  <div class="divider"></div>
+  <h2>Como é uma consulta com a Teresa</h2>
+  <div class="passos">
+    <div class="passo">
+      <div class="passo-icon">📋</div>
+      <div class="passo-content">
+        <h3>Preenche o formulário</h3>
+        <p>Partilha a sua situação atual e o motivo da consulta.</p>
+      </div>
+    </div>
+    <div class="passo">
+      <div class="passo-icon">📞</div>
+      <div class="passo-content">
+        <h3>Entro em contacto</h3>
+        <p>Respondo em 24 a 48 horas úteis para combinar data e formato.</p>
+      </div>
+    </div>
+    <div class="passo">
+      <div class="passo-icon">🤍</div>
+      <div class="passo-content">
+        <h3>Fazemos a consulta</h3>
+        <p>Presencial ou online, adaptada à sua realidade e às necessidades do seu bebé.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SECÇÃO 4 — QUEM SOU ── -->
+<div class="quem-sou-bg">
+  <div class="quem-sou-inner">
+    <span class="section-label">Quem sou eu</span>
+    <div class="divider"></div>
+    <h2>Teresa Coutinho</h2>
+    <p>Sou Enfermeira Especialista em Saúde Materna e Obstétrica e Conselheira em Lactação IBCLC.</p>
+    <p>Acompanho mães e famílias com informação baseada na evidência, com um apoio próximo, sem julgamento e adaptado a cada situação. Porque cada mãe e cada bebé são únicos.</p>
+    <ul class="certs">
+      <li>Enfermeira Especialista em Saúde Materna e Obstétrica</li>
+      <li>Consultora em Lactação IBCLC</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ── IMAGEM 3 ── -->
+<img class="img-banner"
+  src="imagens/foto3.jpg"
+  alt="Mãe com bebé recém-nascido" />
+
+<!-- ── SECÇÃO 5 — FORMATOS ── -->
+<section>
+  <span class="section-label">Formatos disponíveis</span>
+  <div class="divider"></div>
+  <h2>Escolha o formato que melhor se adapta a si</h2>
+  <div class="formatos">
+    <div class="formato-card">
+      <span class="formato-icon">📍</span>
+      <h3>Presencial</h3>
+      <p>No conforto do seu espaço ou num local combinado.</p>
+    </div>
+    <div class="formato-card">
+      <span class="formato-icon">💻</span>
+      <h3>Online</h3>
+      <p>Por videochamada, onde quer que esteja.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── SECÇÃO 6 — FORMULÁRIO ── -->
+<div class="form-bg" id="formulario">
+  <div class="form-inner">
+    <span class="section-label">Marcação</span>
+    <div class="divider"></div>
+    <h2>Dê o primeiro passo.</h2>
+    <p class="form-sub">Preencha o formulário e entro em contacto consigo brevemente.</p>
+
+    <form action="https://formspree.io/f/XXXXXXXX" method="post">
+
+      <div class="form-group">
+        <label for="nome">Nome completo</label>
+        <input type="text" id="nome" name="nome" placeholder="O seu nome" required />
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="O seu email" required />
+      </div>
+
+      <div class="form-group">
+        <label for="telefone">Telefone</label>
+        <input type="tel" id="telefone" name="telefone" placeholder="O seu número de telefone" />
+      </div>
+
+      <hr class="form-divider" />
+
+      <div class="form-group">
+        <label for="situacao">Situação atual</label>
+        <select id="situacao" name="situacao">
+          <option value="" disabled selected>Selecione a sua situação</option>
+          <option value="gravida">Estou grávida</option>
+          <option value="menos1mes">Tive o bebé há menos de 1 mês</option>
+          <option value="1a6meses">Tive o bebé há 1 a 6 meses</option>
+          <option value="mais6meses">Tive o bebé há mais de 6 meses</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Motivo principal da consulta (pode selecionar mais do que um)</label>
+        <div class="checkbox-grid">
+          <label class="checkbox-item"><input type="checkbox" name="motivo" value="dor" /> Dor ao amamentar</label>
+          <label class="checkbox-item"><input type="checkbox" name="motivo" value="pega" /> Dificuldade na pega</label>
+          <label class="checkbox-item"><input type="checkbox" name="motivo" value="producao" /> Dúvidas sobre produção de leite</label>
+          <label class="checkbox-item"><input type="checkbox" name="motivo" value="gravidez" /> Preparação na gravidez</label>
+          <label class="checkbox-item"><input type="checkbox" name="motivo" value="trabalho" /> Regresso ao trabalho</label>
+          <label class="checkbox-item"><input type="checkbox" name="motivo" value="gemeos" /> Amamentação com gémeos</label>
+          <label class="checkbox-item"><input type="checkbox" name="motivo" value="prematuro" /> Bebé prematuro</label>
+          <label class="checkbox-item"><input type="checkbox" name="motivo" value="colostro" /> Recolha de colostro</label>
+          <label class="checkbox-item"><input type="checkbox" name="motivo" value="plano" /> Plano de amamentação</label>
+          <label class="checkbox-item"><input type="checkbox" name="motivo" value="outro" /> Outro</label>
+        </div>
+      </div>
+
+      <hr class="form-divider" />
+
+      <div class="form-group">
+        <label>Preferência de formato</label>
+        <div class="radio-group">
+          <label class="radio-item"><input type="radio" name="formato" value="presencial" /> Presencial</label>
+          <label class="radio-item"><input type="radio" name="formato" value="online" /> Online</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Preferência de contacto</label>
+        <div class="radio-group">
+          <label class="radio-item"><input type="radio" name="contacto" value="telefone" /> Chamada telefónica</label>
+          <label class="radio-item"><input type="radio" name="contacto" value="whatsapp" /> WhatsApp</label>
+          <label class="radio-item"><input type="radio" name="contacto" value="email" /> Email</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="mensagem">Mensagem (opcional)</label>
+        <textarea id="mensagem" name="mensagem" placeholder="Partilhe mais sobre a sua situação, se quiser…"></textarea>
+      </div>
+
+      <button type="submit" class="btn-submit">Enviar pedido de consulta</button>
+      <p class="form-note">Respondo em 24 a 48 horas úteis. A sua informação é confidencial. 🤍</p>
+
+    </form>
+  </div>
+</div>
+
+<!-- ── LOCALIZAÇÃO ── -->
+<div class="localizacao">
+  <p>📍 Consultas presenciais em <strong>Mariocas, Vila Real</strong></p>
+</div>
+
+</body>
+</html>
